@@ -1,0 +1,50 @@
+<form [formGroup]="associateform" (ngSubmit)="SaveAssociate()">
+    <mat-card>
+        <mat-card-header>
+           <h1>{{title}}</h1>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field *ngIf="isedit">
+            <mat-label>Id</mat-label>
+            <input formControlName="id" matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput>
+          </mat-form-field>
+          <mat-form-field class="mat-50">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput>
+          </mat-form-field>
+          <mat-form-field class="mat-50">
+            <mat-label>Phone</mat-label>
+            <input formControlName="phone" matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <textarea formControlName="address" matInput></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Associate Group</mat-label>
+            <mat-select formControlName="group">
+             <mat-option value="level1">Level 1</mat-option>
+             <mat-option value="level2">Level 2</mat-option>
+             <mat-option value="level3">Level 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="div-50">
+            <mat-radio-group formControlName="type">
+              <mat-radio-button color="primary" value="CUSTOMER">CUSTOMER</mat-radio-button>
+              <mat-radio-button color="accent" value="SUPPLIER">SUPPLIER</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="div-50">
+            <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+            <a (click)="ClosePopup()" mat-raised-button color="accent" >Close</a>
+        </mat-card-actions>
+    </mat-card>
+    </form>

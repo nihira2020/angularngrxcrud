@@ -16,12 +16,18 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AssociateReducer } from './Store/Associate/Associate.Reducer';
 import { AssociateEffects } from './Store/Associate/Associate.Effects';
 import { AppEffects } from './Store/Common/App.Effects';
+import { CustomerlistingComponent } from './component/customerlisting/customerlisting.component';
+import { AddcustomerComponent } from './component/addcustomer/addcustomer.component';
+import { CustomerEffects } from './Store/Customer/Customer.Effects';
+import { CUSTOMERReducer } from './Store/Customer/Custmer.Reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
     AssociatelistingComponent,
-    AddassociateComponent
+    AddassociateComponent,
+    CustomerlistingComponent,
+    AddcustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +36,8 @@ import { AppEffects } from './Store/Common/App.Effects';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({associate:AssociateReducer}),
-    EffectsModule.forRoot([AssociateEffects,AppEffects]),
+    StoreModule.forRoot({associate:AssociateReducer,customer:CUSTOMERReducer}),
+    EffectsModule.forRoot([AssociateEffects,AppEffects,CustomerEffects]),
     //StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
