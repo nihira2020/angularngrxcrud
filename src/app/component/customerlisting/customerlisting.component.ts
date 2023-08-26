@@ -50,7 +50,6 @@ export class CustomerlistingComponent implements OnInit {
   }
 
   OpenPopup(code: number, title: string) {
-    this.store.dispatch(openpopupcustomer());
     this.dialog.open(AddcustomerComponent, {
       width: '50%',
       enterAnimationDuration: '1000ms',

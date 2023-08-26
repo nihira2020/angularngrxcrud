@@ -11,10 +11,13 @@ import { Customers } from 'src/app/Store/Model/Customer.model';
   templateUrl: './addcustomer.component.html',
   styleUrls: ['./addcustomer.component.css']
 })
-export class AddcustomerComponent implements OnInit{
+export class AddcustomerComponent implements OnInit {
   title = 'Create Customer'
   isedit = false;
   dialogdata: any;
+  editcode!: number;
+  editdata!: Customers;
+
 
   constructor(private builder: FormBuilder, private ref: MatDialogRef<AddcustomerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private store: Store) {
@@ -23,12 +26,16 @@ export class AddcustomerComponent implements OnInit{
   ngOnInit(): void {
     this.dialogdata = this.data;
     this.title = this.dialogdata.title;
-    this.store.select(getcustomer).subscribe(res => {
-      this.associateform.setValue({
-        id: res.id, name: res.name, email: res.email, phone: res.phone,
-        address: res.address, group: res.associategroup, type: res.type, status: res.status
+    this.editcode = this.dialogdata.code;
+    if (this.editcode > 0) {
+      this.store.select(getcustomer(this.editcode)).subscribe(res => {
+        this.editdata = res as Customers;
+        this.associateform.setValue({
+          id: this.editdata.id, name: this.editdata.name, email: this.editdata.email, phone: this.editdata.phone,
+          address: this.editdata.address, group: this.editdata.associategroup, type: this.editdata.type, status: this.editdata.status
+        })
       })
-    })
+    }
   }
 
   ClosePopup() {

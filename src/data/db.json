@@ -17,27 +17,17 @@
       "phone": "899089898",
       "associategroup": "level1",
       "address": "No 2\nRamraj street, Delhi\nIndai",
-      "type": "CUSTOMER",
+      "type": "SUPPLIER",
       "status": true
     },
     {
       "id": 5,
-      "name": "Ramesh Kumar4",
-      "email": "ramesh@in.com",
+      "name": "Ramesh Kumar",
+      "email": "ramesh@inc.com",
       "phone": "899089898",
-      "address": "No 2\nRamraj street, chennai\nIndai",
-      "type": "CUSTOMER",
-      "associategroup": "level1",
-      "status": true
-    },
-    {
-      "id": 6,
-      "name": "Ramesh Kumar5",
-      "email": "ramesh@in.com",
-      "phone": "899089898",
-      "address": "No 2\nRamraj street, chennai\nIndai",
-      "type": "CUSTOMER",
-      "associategroup": "level1",
+      "associategroup": "level2",
+      "address": "No 2\nRamraj street, chennai test\nIndai",
+      "type": "SUPPLIER",
       "status": true
     },
     {
@@ -47,6 +37,16 @@
       "phone": "78899999",
       "associategroup": "level1",
       "address": "no 1 ,new street",
+      "type": "SUPPLIER",
+      "status": true
+    },
+    {
+      "id": 8,
+      "name": "NT user",
+      "email": "nt@in.com",
+      "phone": "7899900",
+      "associategroup": "level2",
+      "address": "test",
       "type": "SUPPLIER",
       "status": true
     }

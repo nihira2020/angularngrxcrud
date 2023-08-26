@@ -1,16 +1,6 @@
-import { CustomerModel } from "../Model/Customer.model";
+import { CustomerModel, Customers } from "../Model/Customer.model";
+import {createEntityAdapter} from '@ngrx/entity'
 
-export const CustomerState:CustomerModel={
-    list:[],
-    errormessage:'',
-    associateobj:{
-        id: 0,
-        name: "",
-        email: "",
-        phone: "",
-        type: "CUSTOMER",
-        address: "",
-        associategroup: "level1",
-        status: true
-    }
-}
+export const customerAdopter=createEntityAdapter<Customers>();
+
+export const CustomerState:CustomerModel=customerAdopter.getInitialState();

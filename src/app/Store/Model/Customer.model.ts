@@ -1,3 +1,5 @@
+import { EntityState } from "@ngrx/entity"
+
 export interface Customers{
     id:number,
     name:string,
@@ -9,8 +11,8 @@ export interface Customers{
     status:boolean
 }
 
-export interface CustomerModel{
-    list:Customers[],
-    associateobj:Customers,
-    errormessage:string
+export interface CustomerModel extends EntityState<Customers>{
+    // list:Customers[],
+    // associateobj:Customers,
+    // errormessage:string
 }

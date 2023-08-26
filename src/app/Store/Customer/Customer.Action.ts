@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { Customers } from "../Model/Customer.model";
+import { Update } from "@ngrx/entity";
 
 export const LOAD_CUSTOMER='[CUSTOMER page]load CUSTOMER'
 export const LOAD_CUSTOMER_SUCCESS='[CUSTOMER page]load CUSTOMER success'
@@ -24,7 +25,7 @@ export const addCUSTOMER=createAction(ADD_CUSTOMER,props<{inputdata:Customers}>(
 export const addCUSTOMERsuccess=createAction(ADD_CUSTOMER_SUCCESS,props<{inputdata:Customers}>())
 
 export const updateCUSTOMER=createAction(UPDATE_CUSTOMER,props<{inputdata:Customers}>())
-export const updateCUSTOMERsuccess=createAction(UPDATE_CUSTOMER_SUCCESS,props<{inputdata:Customers}>())
+export const updateCUSTOMERsuccess=createAction(UPDATE_CUSTOMER_SUCCESS,props<{inputdata:Update<Customers>}>())
 
 export const deleteeCUSTOMER=createAction(DELETE_CUSTOMER,props<{code:number}>())
 export const deleteCUSTOMERsuccess=createAction(DELETE_CUSTOMER_SUCCESS,props<{code:number}>())
