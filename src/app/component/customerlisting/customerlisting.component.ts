@@ -7,7 +7,7 @@ import { MatPaginator } from "@angular/material/paginator"
 import { MatSort } from "@angular/material/sort"
 import { AddcustomerComponent } from '../addcustomer/addcustomer.component';
 import { Customers } from 'src/app/Store/Model/Customer.model';
-import { getcustomerlist } from 'src/app/Store/Customer/Customer.Selectors';
+import { getErrormessage, getcustomerlist } from 'src/app/Store/Customer/Customer.Selectors';
 import { deleteeCUSTOMER, getCUSTOMER, loadCUSTOMER, openpopupcustomer } from 'src/app/Store/Customer/Customer.Action';
 
 @Component({
@@ -18,6 +18,7 @@ import { deleteeCUSTOMER, getCUSTOMER, loadCUSTOMER, openpopupcustomer } from 's
 export class CustomerlistingComponent implements OnInit {
   Asociatelist!: Customers[];
   datasource: any;
+  errormessage='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -27,6 +28,9 @@ export class CustomerlistingComponent implements OnInit {
   }
   ngOnInit(): void {
     this.store.dispatch(loadCUSTOMER());
+    this.store.select(getErrormessage).subscribe(res=>{
+      this.errormessage=res;
+    })
     this.store.select(getcustomerlist).subscribe(item => {
       this.Asociatelist = item;
       this.datasource = new MatTableDataSource<Customers>(this.Asociatelist);

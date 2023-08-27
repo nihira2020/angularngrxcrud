@@ -11,3 +11,5 @@ export const getcustomerlist = createSelector(getassociatestate, customerSeletor
 const selectedentities = createSelector(getassociatestate, customerSeletor.selectEntities)
 
 export const getcustomer = (id: number) => createSelector(selectedentities, (state) => state[id]);
+
+export const getErrormessage=createSelector(getassociatestate,(state)=>state.errormessage);

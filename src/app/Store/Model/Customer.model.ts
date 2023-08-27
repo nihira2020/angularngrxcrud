@@ -12,7 +12,6 @@ export interface Customers{
 }
 
 export interface CustomerModel extends EntityState<Customers>{
-    // list:Customers[],
-    // associateobj:Customers,
-    // errormessage:string
+     errormessage:string,
+     isloading:boolean
 }

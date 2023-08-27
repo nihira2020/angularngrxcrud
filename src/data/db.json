@@ -49,6 +49,16 @@
       "address": "test",
       "type": "SUPPLIER",
       "status": true
+    },
+    {
+      "id": 9,
+      "name": "Akbar",
+      "email": "test@in.com",
+      "phone": "33333",
+      "associategroup": "level1",
+      "address": "test",
+      "type": "CUSTOMER",
+      "status": true
     }
   ]
 }

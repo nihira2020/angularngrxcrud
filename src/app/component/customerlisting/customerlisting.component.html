@@ -5,7 +5,10 @@
             (+)</button>
     </mat-card-header>
     <mat-card-content>
-        <table matSort mat-table [dataSource]="datasource" class="mat-elevation-z8">
+        <div *ngIf="errormessage">
+            <h1>{{errormessage}}</h1>
+        </div>
+        <table *ngIf="!errormessage" matSort mat-table [dataSource]="datasource" class="mat-elevation-z8">
             <ng-container matColumnDef="code">
                 <th mat-sort-header mat-header-cell *matHeaderCellDef> Code</th>
                 <td mat-cell *matCellDef="let element">{{element.id}}</td>
@@ -53,6 +56,6 @@
     </mat-card-content>
     <br>
     <mat-card-footer>
-        <mat-paginator [pageSizeOptions]="[5,10,50]" showFirstLastButtons></mat-paginator>
+        <mat-paginator *ngIf="!errormessage" [pageSizeOptions]="[5,10,50]" showFirstLastButtons></mat-paginator>
     </mat-card-footer>
 </mat-card>
