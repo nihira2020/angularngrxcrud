@@ -1,0 +1,31 @@
+<form [formGroup]="loginform" (ngSubmit)="Proceedlogin()">
+    <mat-card>
+        <mat-card-header>
+            <h1>User Login</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input formControlName="username" matInput>
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label>Password</mat-label>
+                <input type="password" formControlName="password" matInput>
+            </mat-form-field>
+           
+
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="div-50">
+                 <button type="submit" color="primary" mat-raised-button>Login</button>
+            </div>
+            <div class="div-50">
+                <a (clickevent)="resetlogin()" color="accent" mat-raised-button>Cancel</a>
+           </div>
+        </mat-card-actions>
+        <div class="div-50">
+            <a routerLink="/register" color="primary" mat-button>New User?</a>
+       </div>
+
+    </mat-card>
+</form>

@@ -20,6 +20,14 @@ import { CustomerlistingComponent } from './component/customerlisting/customerli
 import { AddcustomerComponent } from './component/addcustomer/addcustomer.component';
 import { CustomerEffects } from './Store/Customer/Customer.Effects';
 import { CUSTOMERReducer } from './Store/Customer/Custmer.Reducer';
+import { RegisterComponent } from './component/register/register.component';
+import { LoginComponent } from './component/login/login.component';
+import { HomeComponent } from './component/home/home.component';
+import { UserReducer } from './Store/User/User.Reducer';
+import { UserEffect } from './Store/User/User.Effects';
+import { MenubarComponent } from './component/menubar/menubar.component';
+import { UserlistComponent } from './component/userlist/userlist.component';
+import { RolepopupComponent } from './component/rolepopup/rolepopup.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +35,13 @@ import { CUSTOMERReducer } from './Store/Customer/Custmer.Reducer';
     AssociatelistingComponent,
     AddassociateComponent,
     CustomerlistingComponent,
-    AddcustomerComponent
+    AddcustomerComponent,
+    RegisterComponent,
+    LoginComponent,
+    HomeComponent,
+    MenubarComponent,
+    UserlistComponent,
+    RolepopupComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +50,8 @@ import { CUSTOMERReducer } from './Store/Customer/Custmer.Reducer';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({associate:AssociateReducer,customer:CUSTOMERReducer}),
-    EffectsModule.forRoot([AssociateEffects,AppEffects,CustomerEffects]),
+    StoreModule.forRoot({associate:AssociateReducer,customer:CUSTOMERReducer,user:UserReducer}),
+    EffectsModule.forRoot([AssociateEffects,AppEffects,CustomerEffects,UserEffect]),
     //StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],

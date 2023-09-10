@@ -1,0 +1,45 @@
+<mat-card style="min-height: 500px;">
+    <mat-card-header>
+        <h1>User Listing</h1>
+    </mat-card-header>
+    <mat-card-content>
+        
+        <table matSort mat-table [dataSource]="datasource" class="mat-elevation-z8">
+            <ng-container matColumnDef="username">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Username</th>
+                <td mat-cell *matCellDef="let element">{{element.username}}</td>
+              </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let element">{{element.email}}</td>
+            </ng-container>
+            <ng-container matColumnDef="role">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>User Role</th>
+                <td mat-cell *matCellDef="let element">{{element.role}}</td>
+            </ng-container>
+          
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let element">{{element.status==true?'Active':'In Active'}}</td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element">
+                    <button (click)="FunctionChangeRole(element.username)" mat-raised-button color="primary">Change Role</button>
+                </td>
+               
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColums"></tr>
+            <tr mat-row *matRowDef="let row;columns:displayedColums"></tr>
+        </table>
+    </mat-card-content>
+    <br>
+    <mat-card-footer>
+        <mat-paginator  [pageSizeOptions]="[5,10,50]" showFirstLastButtons></mat-paginator>
+    </mat-card-footer>
+</mat-card>

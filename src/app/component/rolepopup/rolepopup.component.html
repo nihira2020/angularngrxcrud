@@ -1,0 +1,33 @@
+<form [formGroup]="roleform" (ngSubmit)="Saveuserrole()">
+    <mat-card>
+        <mat-card-header>
+            <h1>User Role Assignment</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <h2>{{userinfo.username}}</h2>
+                <input style="display: none;" formControlName="username" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>User Role</mat-label>
+                <mat-select formControlName="role">
+                    <mat-option value="{{item.code}}" *ngFor="let item of rolelist">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="div-50">
+                <button type="submit" color="primary" mat-raised-button>Save</button>
+            </div>
+            <div class="div-50">
+                <a (click)="closepopup()" color="accent" mat-raised-button>Cancel</a>
+            </div>
+        </mat-card-actions>
+
+    </mat-card>
+</form>
