@@ -69,7 +69,7 @@
       "email": "ad@in.com",
       "phone": "678888",
       "gender": "male",
-      "role": "admin",
+      "role": "manager",
       "status": true,
       "id": 1
     },

@@ -53,7 +53,7 @@ import { RolepopupComponent } from './component/rolepopup/rolepopup.component';
     StoreModule.forRoot({associate:AssociateReducer,customer:CUSTOMERReducer,user:UserReducer}),
     EffectsModule.forRoot([AssociateEffects,AppEffects,CustomerEffects,UserEffect]),
     //StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() , connectInZone: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
