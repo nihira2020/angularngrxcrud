@@ -28,6 +28,7 @@ import { UserEffect } from './Store/User/User.Effects';
 import { MenubarComponent } from './component/menubar/menubar.component';
 import { UserlistComponent } from './component/userlist/userlist.component';
 import { RolepopupComponent } from './component/rolepopup/rolepopup.component';
+import { NestedtableComponent } from './component/nestedtable/nestedtable.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RolepopupComponent } from './component/rolepopup/rolepopup.component';
     HomeComponent,
     MenubarComponent,
     UserlistComponent,
-    RolepopupComponent
+    RolepopupComponent,
+    NestedtableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,50 @@
+<mat-card style="min-height: 500px;">
+    <mat-card-header>
+        <h1>NESTED TABLE</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+            <ng-container matColumnDef="code">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Code</th>
+                <td mat-cell *matCellDef="let element">{{element.code}}</td>
+              </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="area">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>Area</th>
+                <td mat-cell *matCellDef="let element">{{element.area}}</td>
+            </ng-container>
+            <ng-container matColumnDef="branchcount">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>Branch Count</th>
+                <td mat-cell *matCellDef="let element">{{element.branchcount}}</td>
+            </ng-container>
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                    <div class="example-element-detail" *ngIf="element.branches?.data.length" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                        <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
+                 
+                  <table #innerTables mat-table #innerSort="matSort" [dataSource]="element.branches" matSort>
+                    <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
+                      <td mat-cell *matCellDef="let element"> {{element[innerColumn]}} </td>
+                    </ng-container>
+                    <tr style="background-color: #ccc;" mat-header-row *matHeaderRowDef="innerDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></tr>
+                  </table>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+            <tr style="background-color: black;color: white;" mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"  (click)="toggleRow(element)">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </table>
+    </mat-card-content>
+    <br>
+    <mat-card-footer>
+        <mat-paginator [pageSizeOptions]="[5,10,50]" showFirstLastButtons></mat-paginator>
+    </mat-card-footer>
+</mat-card>

@@ -149,5 +149,69 @@
       "role": "user",
       "menu": "associate"
     }
+  ],
+  "company": [
+    {
+      "code": 1,
+      "name": "NT Infotech",
+      "area": "chennai",
+      "branchcount": 4,
+      "branches": [
+        {
+          "code":"HQ001",
+          "street": "Street 1",
+          "city": "Kansas"
+        },
+        {
+          "code":"HQ002",
+          "street": "Street 2",
+          "city": "Texas"
+        },
+        {
+          "code":"HQ003",
+          "street": "Street 2",
+          "city": "Texas"
+        },{
+          "code":"HQ004",
+          "street": "Street 2",
+          "city": "Texas"
+        },{
+          "code":"HQ005",
+          "street": "Street 2",
+          "city": "Texas"
+        },{
+          "code":"HQ006",
+          "street": "Street 2",
+          "city": "Texas"
+        }
+      ]
+    },
+    {
+      "code": 2,
+      "name": "RN Infotech",
+      "area": "Banglore",
+      "branchcount": 5,
+      "branches": [
+        {
+          "code":"SQ001",
+          "street": "Street 1",
+          "city": "Kansas"
+        },
+        {
+          "code":"SQ002",
+          "street": "Street 2",
+          "city": "Texas"
+        }
+      ]
+    },
+    {
+      "code": 3,
+      "name": "TSN Infotech",
+      "area": "Banglore",
+      "branchcount": 0,
+      "branches": [
+        
+      ]
+    }
   ]
 }
