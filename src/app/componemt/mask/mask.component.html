@@ -1,0 +1,38 @@
+<h2>NGX - MASK</h2>
+<div>
+    <label>Number</label>
+    <input type="text" mask="0000-0000"/>
+</div>
+<div>
+    <label>Phone</label>
+    <input prefix="+91" [showMaskTyped]="true" type="text" mask="(000) 000 0000"/>
+</div>
+<div>
+    <label>Salary</label>
+    <input suffix="$" [showMaskTyped]="true" type="text" mask="0000.00"/>
+    
+</div>
+<div>
+    <label>Salary</label>
+    <input [showMaskTyped]="true" [allowNegativeNumbers]="true" [(ngModel)]="salary" [dropSpecialCharacters]="false" thousandSeparator="," type="text" mask="separator"/>
+    <span>{{salary}}</span>
+</div>
+<div>
+    <label>UserName</label>
+    <input [showMaskTyped]="true" type="text" mask="SSSS-0*" [clearIfNotMatch]="true" />
+</div>
+<div>
+    <label>Percentage</label>
+    <input [showMaskTyped]="true" type="text" mask="percentage" suffix="%" />
+</div>
+<div>
+    <label>Percentage</label>
+    <input [showMaskTyped]="true" [(ngModel)]="phone" type="text" [hiddenInput]="true" mask="(XXX) XXX 0000"  />
+    <span>{{phone}}</span>
+</div>
+<div>
+    <label>Date Time</label>
+    <input [showMaskTyped]="true" type="text" mask="d0/M0/0000"  />
+    <br>
+    <input [showMaskTyped]="true" type="text" mask="Hh:m0:s0"  />
+</div>

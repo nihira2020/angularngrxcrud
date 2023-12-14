@@ -36,6 +36,8 @@ export class NestedtableComponent implements OnInit {
   expandedElement!: Company | null;
 
   
+
+  
   
 
   constructor(private service:MasterService,private cd: ChangeDetectorRef){
@@ -60,7 +62,6 @@ export class NestedtableComponent implements OnInit {
   }
 
   toggleRow(element: Company) {
-    console.log(element);
     element.branches && (element.branches as MatTableDataSource<Branches>).data.length ? (this.expandedElement = (this.expandedElement === element) ? null : element) : null;
    this.cd.detectChanges();
     this.innerTables.forEach((table, index) => (table.dataSource as MatTableDataSource<Branches>).sort = this.innerSort.toArray()[index]);

@@ -8,6 +8,7 @@ import { LoginComponent } from './component/login/login.component';
 import { authGuard } from './guard/auth.guard';
 import { UserlistComponent } from './component/userlist/userlist.component';
 import { NestedtableComponent } from './component/nestedtable/nestedtable.component';
+import { MaskComponent } from './componemt/mask/mask.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent,canActivate:[authGuard]},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'user',component:UserlistComponent,canActivate:[authGuard]},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'nested',component:NestedtableComponent}
+  {path:'nested',component:NestedtableComponent},
+  {path:'mask',component:MaskComponent}
 ];
 
 @NgModule({

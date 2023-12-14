@@ -7,7 +7,7 @@ import { AssociatelistingComponent } from './component/associatelisting/associat
 import { AddassociateComponent } from './component/addassociate/addassociate.component';
 import { MaterialModule } from './Material.Module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -29,6 +29,8 @@ import { MenubarComponent } from './component/menubar/menubar.component';
 import { UserlistComponent } from './component/userlist/userlist.component';
 import { RolepopupComponent } from './component/rolepopup/rolepopup.component';
 import { NestedtableComponent } from './component/nestedtable/nestedtable.component';
+import { MaskComponent } from './componemt/mask/mask.component'
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { NestedtableComponent } from './component/nestedtable/nestedtable.compon
     MenubarComponent,
     UserlistComponent,
     RolepopupComponent,
-    NestedtableComponent
+    NestedtableComponent,
+    MaskComponent
   ],
   imports: [
     BrowserModule,
@@ -51,13 +54,15 @@ import { NestedtableComponent } from './component/nestedtable/nestedtable.compon
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({associate:AssociateReducer,customer:CUSTOMERReducer,user:UserReducer}),
     EffectsModule.forRoot([AssociateEffects,AppEffects,CustomerEffects,UserEffect]),
     //StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() , connectInZone: true})
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() , connectInZone: true}),
+    NgxMaskDirective,NgxMaskPipe
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
