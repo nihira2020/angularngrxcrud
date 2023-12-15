@@ -32,6 +32,7 @@ export class NestedtableComponent implements OnInit {
 
   columnsToDisplay: string[] = ["code", "name", "area", "branchcount"]
   innerDisplayedColumns = ['code','street', 'city'];
+  employeeDisplayedColumns = ['code','name', 'age'];
 
   expandedElement!: Company | null;
 
@@ -47,14 +48,29 @@ export class NestedtableComponent implements OnInit {
   ngOnInit(): void {
     this.service.GetAll().subscribe(item => {
       this.companylist = item;
+     
 
       this.companylist.map(item => {
-        if (item.branches && Array.isArray(item.branches) ) {
-          this.companydata = [...this.companydata, {...item, branches: new MatTableDataSource(item.branches)}];
-        } else {
-          this.companydata = [...this.companydata, item];
+        let _data=item;
+
+        if (_data.branches && Array.isArray(_data.branches) ) {
+          _data = {..._data, branches: new MatTableDataSource(_data.branches)};
         }
+
+       if (_data.employee && Array.isArray(_data.employee) ) {
+          _data = {..._data, employee: new MatTableDataSource(_data.employee)};
+        }
+     
+        this.companydata = [...this.companydata, _data];
+        
+
+        // if (item.branches && Array.isArray(item.branches) ) {
+        //   this.companydata = [...this.companydata, {...item, branches: new MatTableDataSource(item.branches)}];
+        // } else {
+        //   this.companydata = [...this.companydata, item];
+        // }
       });
+     
       this.dataSource = new MatTableDataSource(this.companydata);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -62,7 +78,7 @@ export class NestedtableComponent implements OnInit {
   }
 
   toggleRow(element: Company) {
-    element.branches && (element.branches as MatTableDataSource<Branches>).data.length ? (this.expandedElement = (this.expandedElement === element) ? null : element) : null;
+    this.expandedElement = (this.expandedElement === element) ? null : element;
    this.cd.detectChanges();
     this.innerTables.forEach((table, index) => (table.dataSource as MatTableDataSource<Branches>).sort = this.innerSort.toArray()[index]);
   }

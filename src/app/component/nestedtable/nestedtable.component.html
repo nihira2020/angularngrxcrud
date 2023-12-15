@@ -35,6 +35,22 @@
                   </table>
                         </div>
                     </div>
+
+                    <div class="example-element-detail" *ngIf="element.employee?.data.length" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                        <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
+                 
+                  <table #innerTablesemployee mat-table #innerSort="matSort" [dataSource]="element.employee" matSort>
+                    <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of employeeDisplayedColumns">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
+                      <td mat-cell *matCellDef="let element"> {{element[innerColumn]}} </td>
+                    </ng-container>
+                    <tr style="background-color: #ccc;" mat-header-row *matHeaderRowDef="employeeDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: employeeDisplayedColumns;"></tr>
+                  </table>
+                        </div>
+                    </div>
+
+
                 </td>
             </ng-container>
             <tr style="background-color: black;color: white;" mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

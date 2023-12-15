@@ -184,7 +184,14 @@
           "street": "Street 2",
           "city": "Texas"
         }
-      ]
+      ],
+      "employee": [
+        {
+          "code":"HQ001",
+          "name": "Street 1",
+          "age": 95
+        }
+      ]  
     },
     {
       "code": 2,
@@ -202,7 +209,14 @@
           "street": "Street 2",
           "city": "Texas"
         }
-      ]
+      ],
+      "employee": [
+        {
+          "code":"HQ002",
+          "name": "Rahul",
+          "age": 195
+        }
+      ]  
     },
     {
       "code": 3,
@@ -210,7 +224,76 @@
       "area": "Banglore",
       "branchcount": 0,
       "branches": [
-        
+      ],
+      "employee": [
+        {
+          "code":"HQ002",
+          "name": "Rahul",
+          "age": 195
+        },
+        {
+          "code":"HQ0021",
+          "name": "Rahul",
+          "age": 195
+        }
+      ]
+    }
+  ],
+  "internal": [
+    {
+      "code": 1,
+      "branches": [
+        {
+          "code":"HQ001",
+          "street": "Street 1",
+          "city": "Kansas"
+        }
+      ],
+      "employee": [
+        {
+          "code":"HQ001",
+          "name": "Street 1",
+          "age": 95
+        }
+      ]  
+    },
+    {
+      "code": 2,
+      "branches": [
+        {
+          "code":"SQ001",
+          "street": "Street 1",
+          "city": "Kansas"
+        },
+        {
+          "code":"SQ002",
+          "street": "Street 2",
+          "city": "Texas"
+        }
+      ],
+      "employee": [
+        {
+          "code":"HQ002",
+          "name": "Rahul",
+          "age": 195
+        }
+      ]  
+    },
+    {
+      "code": 3,
+      "branches": [
+      ],
+      "employee": [
+        {
+          "code":"HQ002",
+          "name": "Rahul",
+          "age": 195
+        },
+        {
+          "code":"HQ0021",
+          "name": "Rahul",
+          "age": 195
+        }
       ]
     }
   ]
