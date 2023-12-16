@@ -4,29 +4,22 @@
     </mat-card-header>
     <mat-card-content>
         <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
-            <ng-container matColumnDef="code">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef> Code</th>
-                <td mat-cell *matCellDef="let element">{{element.code}}</td>
+
+            <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of columnsToDisplay">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef>{{innerColumn}}</th>
+                <td mat-cell *matCellDef="let element">
+                    <div *ngIf="innerColumn!=='action'" (click)="toggleRow(element)">{{element[innerColumn]}}</div>
+                    <div *ngIf="innerColumn==='action'"><a mat-raised-button color="primary">Detail</a></div>
+                </td>
             </ng-container>
-            <ng-container matColumnDef="name">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
-                <td mat-cell *matCellDef="let element">{{element.name}}</td>
-            </ng-container>
-            <ng-container matColumnDef="area">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef>Area</th>
-                <td mat-cell *matCellDef="let element">{{element.area}}</td>
-            </ng-container>
-            <ng-container matColumnDef="branchcount">
-                <th mat-sort-header mat-header-cell *matHeaderCellDef>Branch Count</th>
-                <td mat-cell *matCellDef="let element">{{element.branchcount}}</td>
-            </ng-container>
+
             <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+
                     <div class="example-element-detail"
                         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                         <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
-
-                            <table mat-table [dataSource]="element.branches">
+                            <table mat-table [dataSource]="element.branches" *ngIf="element.hasbranches">
                                 <ng-container matColumnDef="{{innerColumn}}"
                                     *ngFor="let innerColumn of innerDisplayedColumns">
                                     <th mat-header-cell *matHeaderCellDef> {{innerColumn}} </th>
@@ -39,11 +32,11 @@
                         </div>
                     </div>
 
-                    <div class="example-element-detail" 
+                    <div class="example-element-detail"
                         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                         <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
 
-                            <table mat-table [dataSource]="element.employee">
+                            <table mat-table [dataSource]="element.employee" *ngIf="element.hasemployee">
                                 <ng-container matColumnDef="{{innerColumn}}"
                                     *ngFor="let innerColumn of employeeDisplayedColumns">
                                     <th mat-header-cell *matHeaderCellDef> {{innerColumn}} </th>
@@ -56,11 +49,10 @@
                         </div>
                     </div>
 
-
                 </td>
             </ng-container>
             <tr style="background-color: black;color: white;" mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-            <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" (click)="toggleRow(element)">
+            <tr mat-row *matRowDef="let element; columns: columnsToDisplay;">
             </tr>
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>

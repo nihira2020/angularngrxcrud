@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, ViewChildren, QueryList } from '@angular/core';
-import { Branches, Company } from 'src/app/Store/Model/Company.model';
+import { Branches, Company, Companydata } from 'src/app/Store/Model/Company.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MasterService } from 'src/app/service/master.service';
@@ -28,13 +28,14 @@ export class NestednewComponent implements OnInit {
 
   dataSource!: MatTableDataSource<Company>;
   companydata: Company[] = [];
-  companyobj!: Company;
+  companyobj!: Companydata;
 
-  columnsToDisplay: string[] = ["code", "name", "area", "branchcount"]
+  columnsToDisplay: string[] = ["code", "name", "area", "branchcount","action"]
   innerDisplayedColumns = ['code', 'street', 'city'];
   employeeDisplayedColumns = ['code', 'name', 'age'];
 
   expandedElement!: Company | null;
+  show=true;
   constructor(private service: MasterService) {
 
   }
@@ -55,18 +56,21 @@ export class NestednewComponent implements OnInit {
   }
 
   Loadupdateddata(code: number) {
-    this.service.GetBranchbycode(code).subscribe(item => {
+    this.service.GetCompanydatabycode(code).subscribe(item => {
       let _respdata = item;
       this.companyobj = _respdata[0];
       if (this.companyobj != null) {
         this.companydata.map(citem => {
           if (citem.code === code) {
-            if (this.companyobj.branches && Array.isArray(this.companyobj.branches)) {
+            ;
+            if (this.companyobj.branches.length && Array.isArray(this.companyobj.branches)) {
               citem.branches = new MatTableDataSource(this.companyobj.branches)
-            }
-            if (this.companyobj.employee && Array.isArray(this.companyobj.employee)) {
+              citem.hasbranches = true;
+            } 
+            if (this.companyobj.employee.length && Array.isArray(this.companyobj.employee)) {
               citem.employee = new MatTableDataSource(this.companyobj.employee)
-            }
+              citem.hasemployee = true;
+            } 
           }
         });
       }

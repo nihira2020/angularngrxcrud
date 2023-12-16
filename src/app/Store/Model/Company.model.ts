@@ -7,6 +7,8 @@ export interface Company{
     branchcount:number,
     branches: MatTableDataSource<Branches>;
     employee: MatTableDataSource<Employee>;
+    hasemployee:boolean;
+    hasbranches:boolean;
 }
 export interface Branches {
     code :string;
@@ -20,3 +22,9 @@ export interface Branches {
     name: string;
     age: number;
   }
+
+  export interface Companydata{
+    code:number,
+    branches: Branches[];
+    employee: Employee[];
+}
