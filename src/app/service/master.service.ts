@@ -15,4 +15,14 @@ export class MasterService {
   GetAll() {
     return this.http.get<Company[]>(this.baseurl);
   }
+  GetAllnew() {
+    return this.http.get<Company[]>('http://localhost:3000/companynew');
+  }
+
+  GetBranchbycode(code:any){
+    return this.http.get<Company[]>('http://localhost:3000/companynew?code='+code);
+    
+  }
+
+
 }

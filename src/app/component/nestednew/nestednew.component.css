@@ -1,0 +1,16 @@
+tr.example-detail-row {
+    height: 0;
+  }
+
+   .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  .inner-table {
+    width: 100%;
+  }
+
+  table{
+    margin: 5px;
+    border: 1px solid #ccc;
+  }

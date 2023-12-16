@@ -5,8 +5,8 @@ export interface Company{
     name:string,
     area:string,
     branchcount:number,
-    branches?: MatTableDataSource<Branches>;
-    employee?: MatTableDataSource<Employee>;
+    branches: MatTableDataSource<Branches>;
+    employee: MatTableDataSource<Employee>;
 }
 export interface Branches {
     code :string;

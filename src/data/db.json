@@ -155,43 +155,66 @@
       "code": 1,
       "name": "NT Infotech",
       "area": "chennai",
+      "branchcount": 4
+    },
+    {
+      "code": 2,
+      "name": "RN Infotech",
+      "area": "Banglore",
+      "branchcount": 5
+    },
+    {
+      "code": 3,
+      "name": "TSN Infotech",
+      "area": "Banglore",
+      "branchcount": 0
+    }
+  ],
+  "companynew": [
+    {
+      "code": 1,
+      "name": "NT Infotech",
+      "area": "chennai",
       "branchcount": 4,
       "branches": [
         {
-          "code":"HQ001",
+          "code": "HQ001",
           "street": "Street 1",
           "city": "Kansas"
         },
         {
-          "code":"HQ002",
+          "code": "HQ002",
           "street": "Street 2",
           "city": "Texas"
         },
         {
-          "code":"HQ003",
+          "code": "HQ003",
           "street": "Street 2",
           "city": "Texas"
-        },{
-          "code":"HQ004",
+        },
+        {
+          "code": "HQ004",
           "street": "Street 2",
           "city": "Texas"
-        },{
-          "code":"HQ005",
+        },
+        {
+          "code": "HQ005",
           "street": "Street 2",
           "city": "Texas"
-        },{
-          "code":"HQ006",
+        },
+        {
+          "code": "HQ006",
           "street": "Street 2",
           "city": "Texas"
         }
       ],
       "employee": [
         {
-          "code":"HQ001",
+          "code": "HQ001",
           "name": "Street 1",
           "age": 95
         }
-      ]  
+      ]
     },
     {
       "code": 2,
@@ -200,97 +223,38 @@
       "branchcount": 5,
       "branches": [
         {
-          "code":"SQ001",
+          "code": "SQ001",
           "street": "Street 1",
           "city": "Kansas"
         },
         {
-          "code":"SQ002",
+          "code": "SQ002",
           "street": "Street 2",
           "city": "Texas"
         }
       ],
       "employee": [
         {
-          "code":"HQ002",
+          "code": "HQ002",
           "name": "Rahul",
           "age": 195
         }
-      ]  
+      ]
     },
     {
       "code": 3,
       "name": "TSN Infotech",
       "area": "Banglore",
       "branchcount": 0,
-      "branches": [
-      ],
+      "branches": [],
       "employee": [
         {
-          "code":"HQ002",
+          "code": "HQ002",
           "name": "Rahul",
           "age": 195
         },
         {
-          "code":"HQ0021",
-          "name": "Rahul",
-          "age": 195
-        }
-      ]
-    }
-  ],
-  "internal": [
-    {
-      "code": 1,
-      "branches": [
-        {
-          "code":"HQ001",
-          "street": "Street 1",
-          "city": "Kansas"
-        }
-      ],
-      "employee": [
-        {
-          "code":"HQ001",
-          "name": "Street 1",
-          "age": 95
-        }
-      ]  
-    },
-    {
-      "code": 2,
-      "branches": [
-        {
-          "code":"SQ001",
-          "street": "Street 1",
-          "city": "Kansas"
-        },
-        {
-          "code":"SQ002",
-          "street": "Street 2",
-          "city": "Texas"
-        }
-      ],
-      "employee": [
-        {
-          "code":"HQ002",
-          "name": "Rahul",
-          "age": 195
-        }
-      ]  
-    },
-    {
-      "code": 3,
-      "branches": [
-      ],
-      "employee": [
-        {
-          "code":"HQ002",
-          "name": "Rahul",
-          "age": 195
-        },
-        {
-          "code":"HQ0021",
+          "code": "HQ0021",
           "name": "Rahul",
           "age": 195
         }

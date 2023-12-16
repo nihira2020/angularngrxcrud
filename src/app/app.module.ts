@@ -31,6 +31,7 @@ import { RolepopupComponent } from './component/rolepopup/rolepopup.component';
 import { NestedtableComponent } from './component/nestedtable/nestedtable.component';
 import { MaskComponent } from './componemt/mask/mask.component'
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { NestednewComponent } from './component/nestednew/nestednew.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     UserlistComponent,
     RolepopupComponent,
     NestedtableComponent,
-    MaskComponent
+    MaskComponent,
+    NestednewComponent
   ],
   imports: [
     BrowserModule,
