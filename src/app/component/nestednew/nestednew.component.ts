@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, ViewChildren, QueryList } from '@angular/core';
-import { Branches, Company, Companydata } from 'src/app/Store/Model/Company.model';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MasterService } from 'src/app/service/master.service';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Company, Branches } from 'src/app/Store/Model/Company.model';
+import { MasterService } from 'src/app/service/master.service';
 
 @Component({
   selector: 'app-nestednew',
@@ -20,64 +19,64 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class NestednewComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
-  @ViewChildren('innerTables') innerTables!: QueryList<MatTable<Branches>>;
+  @ViewChildren('innertable') innerTable!: QueryList<MatTable<Branches>>;
   @ViewChildren('innerSort') innerSort!: QueryList<MatSort>;
 
-  dataSource!: MatTableDataSource<Company>;
-  companydata: Company[] = [];
-  companyobj!: Companydata;
-
-  columnsToDisplay: string[] = ["code", "name", "area", "branchcount","action"]
-  innerDisplayedColumns = ['code', 'street', 'city'];
-  employeeDisplayedColumns = ['code', 'name', 'age'];
-
+  companylist: Company[] = [];
+  datasource!: MatTableDataSource<Company>;
+  columnsToDisplay: string[] = ["code", "name", "area", "branchcount"];
+  branchToDisplay: string[] = ["code", "street", "city"]
+  employeeToDisplay: string[] = ["code", "name", "age"]
   expandedElement!: Company | null;
-  show=true;
-  constructor(private service: MasterService) {
+
+  constructor(private service: MasterService,private ref:ChangeDetectorRef) {
 
   }
 
   ngOnInit(): void {
+    this.GetAll();
+  }
+
+  GetAll() {
     this.service.GetAll().subscribe(item => {
-      this.companydata = item;
-      this.dataSource = new MatTableDataSource(this.companydata);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+      this.companylist = item;
+      this.datasource = new MatTableDataSource(this.companylist);
+      this.datasource.sort = this.sort;
+    })
   }
 
-  toggleRow(element: Company) {
+  toggle(element: Company) {
     this.expandedElement = (this.expandedElement === element) ? null : element;
-    this.Loadupdateddata(element.code);
-
+    this.Loadsubtabledata(element.code);
+   
+    this.innerTable.forEach((table,index)=>(table.dataSource as MatTableDataSource<Branches>).sort=this.innerSort.toArray()[index]);
+    this.ref.detectChanges();
   }
 
-  Loadupdateddata(code: number) {
+  Loadsubtabledata(code: number) {
     this.service.GetCompanydatabycode(code).subscribe(item => {
-      let _respdata = item;
-      this.companyobj = _respdata[0];
-      if (this.companyobj != null) {
-        this.companydata.map(citem => {
-          if (citem.code === code) {
-            ;
-            if (this.companyobj.branches.length && Array.isArray(this.companyobj.branches)) {
-              citem.branches = new MatTableDataSource(this.companyobj.branches)
-              citem.hasbranches = true;
-            } 
-            if (this.companyobj.employee.length && Array.isArray(this.companyobj.employee)) {
-              citem.employee = new MatTableDataSource(this.companyobj.employee)
-              citem.hasemployee = true;
-            } 
+      let responsedata = item;
+      if (responsedata != null) {
+        this.companylist.map(o => {
+
+          if (o.code === code) {
+            if (responsedata[0].branches.length > 0 && Array.isArray(responsedata[0].branches)) {
+              o.branches = new MatTableDataSource(responsedata[0].branches);
+              o.hasbranches = true;
+            }
+            if (responsedata[0].employee.length > 0 && Array.isArray(responsedata[0].employee)) {
+              o.employee = new MatTableDataSource(responsedata[0].employee);
+              o.hasemployee = true;
+            }
           }
-        });
+
+        })
       }
-      this.dataSource = new MatTableDataSource(this.companydata);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+
     });
+
   }
+
 
 }

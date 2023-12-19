@@ -15,12 +15,8 @@ export class MasterService {
   GetAll() {
     return this.http.get<Company[]>(this.baseurl);
   }
-  GetAllnew() {
-    return this.http.get<Company[]>('http://localhost:3000/companynew');
-  }
-
   GetCompanydatabycode(code:any){
-    return this.http.get<Companydata[]>('http://localhost:3000/companynew?code='+code);
+    return this.http.get<Companydata[]>('http://localhost:3000/companydata?code='+code);
     
   }
 

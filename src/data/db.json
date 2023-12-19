@@ -170,12 +170,9 @@
       "branchcount": 0
     }
   ],
-  "companynew": [
+  "companydata": [
     {
       "code": 1,
-      "name": "NT Infotech",
-      "area": "chennai",
-      "branchcount": 4,
       "branches": [
         {
           "code": "HQ001",
@@ -218,9 +215,6 @@
     },
     {
       "code": 2,
-      "name": "RN Infotech",
-      "area": "Banglore",
-      "branchcount": 5,
       "branches": [
         {
           "code": "SQ001",
@@ -243,9 +237,6 @@
     },
     {
       "code": 3,
-      "name": "TSN Infotech",
-      "area": "Banglore",
-      "branchcount": 0,
       "branches": [],
       "employee": [
         {

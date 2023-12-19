@@ -7,7 +7,7 @@ tr.example-detail-row {
     display: flex;
   }
   .inner-table {
-    width: 100%;
+    width: 90%;
   }
 
   table{

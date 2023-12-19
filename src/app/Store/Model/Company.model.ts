@@ -13,7 +13,6 @@ export interface Company{
 export interface Branches {
     code :string;
     street: string;
-    zipCode: string;
     city: string;
   }
 
