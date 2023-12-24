@@ -32,7 +32,6 @@ import { NestedtableComponent } from './component/nestedtable/nestedtable.compon
 import { MaskComponent } from './componemt/mask/mask.component'
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { NestednewComponent } from './component/nestednew/nestednew.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +61,8 @@ import { NestednewComponent } from './component/nestednew/nestednew.component';
     EffectsModule.forRoot([AssociateEffects,AppEffects,CustomerEffects,UserEffect]),
     //StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() , connectInZone: true}),
-    NgxMaskDirective,NgxMaskPipe
+    NgxMaskDirective,NgxMaskPipe,
+
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent]
